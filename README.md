@@ -1,3 +1,4 @@
 # ROHIT-
-THIS IS MADE FOR MEMORIES OF MY SCHOOL LIFE OF MK AND AYUSH
-![ITACHI](https://github.com/user-attachments/assets/7f59171c-8531-4fd1-a384-de2a740b033d)
+THIS IS MADE FOR MEMORIES OF MY SCHOOL LIFE OF ROHIT AND AYUSH
+<img src="https://github.com/user-attachments/assets/c15af9d3-7048-484b-8859-329300a2f1c9" width="900" HEIGHT="500">
+<H1> YOUR NAME <INPUT TYPE="TEXT"> </H1><BR>
