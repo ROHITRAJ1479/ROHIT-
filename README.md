@@ -3,111 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InstaClone - Instagram Like App</title>
+    <title>Math Quiz Master - 100 Levels</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Login/Register Modal -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-container">
-            <!-- Login Form -->
-            <div class="modal-content active" id="loginForm">
-                <div class="modal-header">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1280px-Instagram_logo.svg.png" alt="Instagram" class="logo">
-                    <h2>Log in</h2>
-                </div>
-                <form id="loginFormElement">
-                    <input type="email" id="loginEmail" placeholder="Email or Phone" required>
-                    <input type="password" id="loginPassword" placeholder="Password" required>
-                    <button type="submit" class="login-btn">Log in</button>
-                </form>
-                <div class="divider">
-                    <span>OR</span>
-                </div>
-                <button class="facebook-login">
-                    <i class="fab fa-facebook-f"></i>
-                    Log in with Facebook
-                </button>
-                <div class="modal-footer">
-                    <p>Forgot password? <a href="#" id="forgotPassword">Reset it</a></p>
-                    <p>Don't have an account? <a href="#" id="showRegister">Sign up</a></p>
-                </div>
-            </div>
-
-            <!-- Register Form -->
-            <div class="modal-content" id="registerForm">
-                <div class="modal-header">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1280px-Instagram_logo.svg.png" alt="Instagram" class="logo">
-                    <h2>Sign up</h2>
-                </div>
-                <form id="registerFormElement">
-                    <input type="email" id="regEmail" placeholder="Email" required>
-                    <input type="text" id="regFullname" placeholder="Full Name" required>
-                    <input type="text" id="regUsername" placeholder="Username" required>
-                    <input type="password" id="regPassword" placeholder="Password" required>
-                    <button type="submit" class="signup-btn">Sign up</button>
-                </form>
-                <div class="modal-footer">
-                    <p>Have an account? <a href="#" id="showLogin">Log in</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main App (Hidden until login) -->
-    <div class="app-container hidden" id="appContainer">
-        <!-- Header -->
+    <div class="container">
+        <!-- Game Header -->
         <header class="header">
-            <div class="header-left">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1280px-Instagram_logo.svg.png" alt="Instagram" class="logo-small">
+            <div class="logo">
+                <i class="fas fa-calculator"></i>
+                <h1>Math Quiz Master</h1>
             </div>
-            <div class="header-center">
-                <input type="text" placeholder="Search" class="search-bar">
-            </div>
-            <div class="header-right">
-                <i class="fas fa-home"></i>
-                <i class="far fa-comment"></i>
-                <i class="far fa-bell"></i>
-                <div class="profile-pic" id="profilePic">
-                    <i class="fas fa-user"></i>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-label">Level</span>
+                    <span class="stat-value" id="currentLevel">1</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Score</span>
+                    <span class="stat-value" id="score">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Best</span>
+                    <span class="stat-value" id="bestScore">0</span>
                 </div>
             </div>
         </header>
 
-        <!-- Stories Section -->
-        <div class="stories">
-            <div class="story active">
-                <div class="story-avatar">
-                    <i class="fas fa-plus"></i>
+        <!-- Main Game Area -->
+        <main class="game-area">
+            <!-- Welcome Screen -->
+            <div class="welcome-screen active" id="welcomeScreen">
+                <div class="welcome-content">
+                    <i class="fas fa-brain"></i>
+                    <h2>Welcome to Math Quiz Master!</h2>
+                    <p>Test your math skills across 100 challenging levels!</p>
+                    <div class="level-info">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Each level gets progressively harder!</span>
+                    </div>
+                    <button class="start-btn" id="startBtn">
+                        <i class="fas fa-rocket"></i> Start Quiz
+                    </button>
                 </div>
-                <span>Your Story</span>
             </div>
-            <div class="story">
-                <img src="https://via.placeholder.com/60" class="story-avatar" alt="User">
-                <span>user1</span>
-            </div>
-            <div class="story">
-                <img src="https://via.placeholder.com/60" class="story-avatar" alt="User">
-                <span>user2</span>
-            </div>
-        </div>
 
-        <!-- Posts Feed -->
-        <div class="feed" id="feed">
-            <!-- Posts will be dynamically loaded here -->
-        </div>
+            <!-- Game Screen -->
+            <div class="game-screen hidden" id="gameScreen">
+                <!-- Progress Bar -->
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <span class="progress-text" id="progressText">Level 1/100</span>
+                </div>
 
-        <!-- Profile Dropdown -->
-        <div class="profile-dropdown hidden" id="profileDropdown">
-            <div class="dropdown-item" id="profileLink">
-                <i class="fas fa-user"></i>
-                Profile
+                <!-- Question Area -->
+                <div class="question-container">
+                    <div class="question-box" id="questionBox">
+                        <div class="question" id="question"></div>
+                        <div class="timer" id="timer">
+                            <i class="fas fa-clock"></i>
+                            <span id="timeLeft">30</span>s
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Answer Options -->
+                <div class="options-container" id="optionsContainer">
+                    <div class="options-grid" id="optionsGrid"></div>
+                </div>
+
+                <!-- Result Feedback -->
+                <div class="feedback-container hidden" id="feedbackContainer">
+                    <div class="feedback-icon" id="feedbackIcon"></div>
+                    <div class="feedback-message" id="feedbackMessage"></div>
+                    <button class="next-btn" id="nextBtn">
+                        <i class="fas fa-arrow-right"></i> Next Question
+                    </button>
+                </div>
             </div>
-            <div class="dropdown-item" id="logoutBtn">
-                <i class="fas fa-sign-out-alt"></i>
-                Log out
+
+            <!-- Level Complete Screen -->
+            <div class="level-complete-screen hidden" id="levelCompleteScreen">
+                <div class="level-complete-content">
+                    <i class="fas fa-trophy"></i>
+                    <h2>Level <span id="completedLevel">1</span> Complete!</h2>
+                    <p>Great job! Ready for the next challenge?</p>
+                    <button class="continue-btn" id="continueBtn">Continue to Level <span id="nextLevel">2</span></button>
+                </div>
             </div>
+
+            <!-- Game Over Screen -->
+            <div class="game-over-screen hidden" id="gameOverScreen">
+                <div class="game-over-content">
+                    <i class="fas fa-flag-checkered"></i>
+                    <h2>Congratulations!</h2>
+                    <p>You completed all 100 levels!</p>
+                    <div class="final-stats">
+                        <div class="final-stat">
+                            <span>Total Score:</span>
+                            <span id="finalScore">0</span>
+                        </div>
+                    </div>
+                    <button class="restart-btn" id="restartBtn">Play Again</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button class="control-btn" id="pauseBtn" title="Pause">
+                <i class="fas fa-pause"></i>
+            </button>
+            <button class="control-btn" id="soundBtn" title="Sound">
+                <i class="fas fa-volume-up"></i>
+            </button>
         </div>
     </div>
 
