@@ -1,3 +1,5 @@
+body {
+    background-color: #f2f2f2;
 
 <h1>WELCOME TO ROHIT'S WEBSIDE</h1>
 
@@ -5,3 +7,5 @@
 MY COACH AND FRIEND HARSHIT
 <img width="600" height="250" alt="20260704_190634" src="https://github.com/user-attachments/assets/4805aadd-4813-4c35-ad2c-f28e46417745" />
 MY FRIEND AURA POSE 
+
+}
